@@ -4,7 +4,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Original+Surfer&family=Playfair+Display+SC&display=swap" rel="stylesheet">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title> Owner's Registration </title>
+<title>Owners Registration</title>
 <style> 
 Body {
   font-family:'Original Surfer', cursive ;
@@ -17,7 +17,7 @@ button {
        width: 30%;
         color: rgb(0, 0, 0); 
         padding: 15px; 
-        margin: 10px 190px; 
+        margin: 10px 200px; 
         border: none; 
         cursor: pointer; 
          } 
@@ -43,29 +43,24 @@ button {
         padding: 20px; 
         width: 50%;
         background-color: rgb(202, 126, 26);
-        margin: 40px 230px;
+        margin: 40px 270px;
         font-family:'Original Surfer', cursive ;
-    } 
 
   
-    
+
+    } 
 </style> 
 </head>  
 <body>  
-    <center> <h1> Owner's Registration </h1> </center> 
-    <form method="POST">
+    <h1 style="text-align: center;">Owners Registration</h1> 
+    <form method="POST" action="/LMList/new">
         <div class="container"> 
             <label>Owner's Name: </label> 
             <input type="text" id="owner" placeholder="Enter your fullname" name="owner"><br>
             <label>Address : </label> 
             <input type="text" id="address" placeholder="Enter your complete address" name="address">
 
-            <label style="font-family:'Original Surfer', cursive ;"> Pet's Name : </label> 
-            <input type="text" id="pet"placeholder="Enter your pet name" name="pet" 
-            <label style="font-family:'Original Surfer', cursive ;"> Breed : </label> 
-            <input type="text" id="breed"placeholder="Type of breed" name="breed" >
-            <label style="font-family:'Original Surfer', cursive ;"> Birthday : </label> 
-            <input type="text" id="birthday"placeholder="MM/DD/YYYY" name="birthday" >
+           
 
 
 
@@ -74,15 +69,19 @@ button {
         </div> 
         {% csrf_token %}
     </form>  
-
-    <table id="listTable">
+    {% for item in items %}
+    <table id="listTable" name=tr>
         <tr>
-            <td>1: {{ pet }}</td>
-            <td>{{ breed }}</td>
-            <td>on</td>
-            <td>{{ birthday }}</td>
+        
+        <td>{{ item.nname }}</td>
+      
+          <td>{{ item.nAddress}}</td>
+    
+        
         </tr>
+         {% endfor %}
     </table>
+
 </body>   
 </html>
 
