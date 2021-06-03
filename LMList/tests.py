@@ -1,6 +1,6 @@
 from django.urls import resolve
 from django.test import TestCase
-from LMList.views import home_page
+from LMList.views import COMPANY
 
 from LMList.models import Item, List
 
@@ -12,7 +12,7 @@ class MyMainPage(TestCase):
     
    def test_root_url_resolves_to_mainpage_view(self):
       found = resolve('/')
-      self.assertEqual(found.func, home_page)
+      self.assertEqual(found.func, COMPANY)
    def test_only_saves_items_when_necessary(self): 
       self.client.get('/')        
       self.assertEqual(Item.objects.count(), 0)
@@ -21,7 +21,7 @@ class ListViewTest(TestCase):
    def test_uses_list_template(self):
       list_ = List.objects.create()        
       response = self.client.get(f'/LMList/{list_.id}/')
-      self.assertTemplateUsed(response, 'registration.html')
+      self.assertTemplateUsed(response, 'BRANCH.html')
      
    def test_displays_all_list_items(self):        
        list_ = List.objects.create()        
@@ -88,8 +88,8 @@ class ORM(TestCase):
 
 
 
-'''
-def test_displays_only_items_for_that_list(self):
+
+'''def test_displays_only_items_for_that_list(self):
       correct_list = List.objects.create()
       Item.objects.create(npet='shana', list=correct_list)
       #Item.objects.create(npet='itemey 2', list=correct_list)

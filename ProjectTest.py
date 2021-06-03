@@ -10,7 +10,7 @@ class PageTest(unittest.TestCase):
 
 	def test_browser_title(self):
 	    self.browser.get('http://localhost:8000/')
-	    self.assertIn("Owner's Registration",self.browser.title)
+	    self.assertIn("Company Management System",self.browser.title)
 
 	def check_for_rows_in_list_table(self,row_text):
 	    table = self.browser.find_element_by_id('listTable')
@@ -19,43 +19,57 @@ class PageTest(unittest.TestCase):
 
 	def test_start_list_and_retrieve_it(self):
 	    self.browser.get('http://localhost:8000/')
-	    self.assertIn("Owner's Registration",self.browser.title)
+	    self.assertIn("Company Management System",self.browser.title)
 
 	    header_Text = self.browser.find_element_by_tag_name('h1')
-	    self.assertIn("Owner's Registration", header_Text)
+	    self.assertIn("Company Management System", header_Text)
 	 
-	 
-	    
+	
 
-	    inputowner = self.browser.find_element_by_id('owner')
-	    self.assertEqual(inputowner.get_attribute('placeholder'), "owner")
-	    inputowner.click()
-	    inputowner.send_keys('Leonalyn Maglines')
+	    Cname = self.browser.find_element_by_id('Cname')
+	    self.assertEqual(Cname.get_attribute('placeholder'), "Cname")
+	    inputCname.click()
+	    inputCname.send_keys('iQor')
 	    time.sleep(1)
 	    
 	    
-	    inputaddress = self.browser.find_element_by_id('address')
-	    inputaddress.click()
-	    inputaddress.send_keys('Blk 13 lot 10 brgy Dimawari')
+	    inputDestablish = self.browser.find_element_by_id('Destablish')
+	    inputDestablish.click()
+	    inputDestablish.send_keys('08-24-2000')
 	    time.sleep(1)
 	  
-	    inputpet = self.browser.find_element_by_id('pet')
-	    inputpet.click()
-	    inputpet.send_keys('Shana')
+	    inputCdescription = self.browser.find_element_by_id('Cdescription')
+	    inputCdescription.click()
+	    inputCdescription.send_keys('iQor is a managed services provider of customer engagement and technology-enabled BPO solutions.')
 	    time.sleep(1)
 	 
-	    inputbreed = self.browser.find_element_by_id('breed')
-	    inputbreed.click()
-	    inputbreed.send_keys('Puspin')
+	    inputmission = self.browser.find_element_by_id('mission')
+	    inputmission.click()
+	    inputmission.send_keys('We support your customer wherever and whenever they need assistance.')
 	    time.sleep(1)
 	 
-	    inputday = self.browser.find_element_by_id('birthday')
-	    inputday.click()
-	    inputday.send_keys('08/22/2013')
+	    inputvision = self.browser.find_element_by_id('vision')
+	    inputvision.click()
+	    inputvision.send_keys('Making people happy is at the heart of what we do.')
 	    time.sleep(1)
-	 
-	    btnContinue = self.browser.find_element_by_id('btnContinue')
-	    btnContinue.click()
+
+	    inputlocation = self.browser.find_element_by_id('location')
+	    inputlocation.click()
+	    inputlocation.send_keys('SM City Dasmarinas')
+	    time.sleep(1)
+
+	    inputCaddress = self.browser.find_element_by_id('Caddress')
+	    inputCaddress.click()
+	    inputCaddress.send_keys("3rd Floor SM City Dasmariñas, Governor's Dr, Barangay Sampaloc 1, Dasmariñas, 4114 Cavite")
+	    time.sleep(1)
+
+	    inputCnumber = self.browser.find_element_by_id('Cnumber')
+	    inputCnumber.click()
+	    inputCnumber.send_keys('0918-807-4225')
+	    time.sleep(1)
+
+	    btnProceed = self.browser.find_element_by_id('btnProceed')
+	    btnProceed.click()
 	    time.sleep(2)
 	 
 
@@ -88,4 +102,4 @@ if __name__=='__main__':
 	 self.check_for_rows_in_list_table("1: Kuma Pomeranian born on 05/25/2012")
 	 table = self.browser.find_element_by_id('listTable')
 	 rows = table.find_element_by_tag_name('tr')
-''''
+'''
