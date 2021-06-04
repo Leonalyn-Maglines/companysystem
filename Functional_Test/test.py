@@ -5,7 +5,7 @@ import time
 from selenium.common.exceptions import WebDriverException
 
 MAX_WAIT = 3
-class PageTest(LiveServerTestCase):
+class Compay_Management_System(LiveServerTestCase):
 
 
 
@@ -25,12 +25,12 @@ class PageTest(LiveServerTestCase):
                  
 	def setUp(self):
 	 self.browser = webdriver.Firefox()
-	def test_browser_title(self):
+	def test_Compay_Management_System(self):
 	 self.browser.get('http://localhost:8000/')
 	 
 	 self.assertIn('Company Management System',self.browser.title)
-	 header_text = self.browser.find_element_by_tag_name('h1').text
-	 self.assertIn('Company Management System', header_text)
+	 #header_text = self.browser.find_element_by_tag_name('h1').text
+	 #self.assertIn('Company Management System', header_text)
 	 Cname = self.browser.find_element_by_id('Cname')
 	 self.assertEqual(Cname.get_attribute('placeholder'),'Enter your the company name')
 	 Cname.click()
@@ -38,7 +38,7 @@ class PageTest(LiveServerTestCase):
 	 Cname.send_keys('iQor')
 	 time.sleep(1)
 	 Destablish = self.browser.find_element_by_id('Destablish')
-	 self.assertEqual(Destablish.get_attribute('placeholder'),'dd/mm/yyyy')
+	 self.assertEqual(Destablish.get_attribute('placeholder'),"YYYY-MM-DD HH:MM")
 	 Destablish.click()
 	 time.sleep(1)
 	 Destablish.send_keys('08-24-2000')
@@ -65,8 +65,8 @@ class PageTest(LiveServerTestCase):
 	 vision.send_keys('Making people happy is at the heart of what we do.')
 	 time.sleep(1)
 
-	 btnProceed = self.browser.find_element_by_id('btnProceed')
-	 btnProceed.click()
+	 btnNext = self.browser.find_element_by_id('btnNext')
+	 btnNext.click()
 	 time.sleep(2)
 
 
@@ -77,11 +77,11 @@ class PageTest(LiveServerTestCase):
 	 location.send_keys('SM City Dasmarinas')
 	 time.sleep(1)
 
-	 inputCaddress= self.browser.find_element_by_id('Caddress')
+	 Caddress= self.browser.find_element_by_id('Caddress')
 	 self.assertEqual(Caddress.get_attribute('placeholder'),'Enter the full company address')
-	 inputCaddress.click()
+	 Caddress.click()
 	 time.sleep(1)
-	 inputCaddress.send_keys("3rd Floor SM City Dasmariñas, Governor's Dr, Barangay Sampaloc 1, Dasmariñas, 4114 Cavite")
+	 Caddress.send_keys("3rd Floor SM City Dasmariñas, Governor's Dr, Barangay Sampaloc 1, Dasmariñas, 4114 Cavite")
 	 time.sleep(1)
 
 

@@ -2,23 +2,24 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from LMList.models import Branch, Company
 
+def home_page(request):
+    companys = Company.objects.all()
+
+    return render(request, 'COMPANY.html',{'companys' : companys})
+
 def view_list(request, companyid):
     company_ = Company.objects.get(id=companyid)
-    return render(request, 'COMPANY.html', {'companys': company_})
-
-def home_page(request):
-    branchs = Branch.objects.all()
-    return render(request, 'BRANCH.html',{'branchs' : branchs})
+    return render(request, 'BRANCH.html', {'company': company_})
 
 def new_list(request):
     New_Company = Company.objects.create()
-    Company.objects.create(hcompany_name =request.POST['Cname'],hdate_establish=request.POST['Destablish'],hcompany_description=request.POST['Cdescription'],hmission=request.POST['mission'],hvission=request.POST['vision'],company_=company_)
+    Company.objects.create(hcompany_name =request.POST['Cname'],hdate_establish=request.POST['Destablish'],hcompany_description=request.POST['Cdescription'],hmission=request.POST['mission'],hvission=request.POST['vision'])
     return redirect(f'/LMList/{New_Company.id}/')
 
 def add_item(request, companyid):
     company_ = Company.objects.get(id=companyid)
     Branch.objects.create(bcompany_branch=request.POST['location'],bcompany_address =request.POST['cdescription'],bcontact_number =request.POST['Cnumber'],company_=company_)
-    return redirect(f'/LMList/{company.id}/')
+    return redirect(f'/LMList/{company_.id}/')
 
 
 def dataManipulation(request):
@@ -37,12 +38,12 @@ def dataManipulation(request):
 	res += '<br> Deleting an Company entry <br>'
 	CompanyName.delete()
 
-	company = Company(hcompany_name='iQor', hcompany_address='Quezon City Maginhawa Street')
+	company = Company(hcompany_name='iQor', bcompany_address="3rd Floor SM City Dasmariñas, Governor's Dr, Barangay Sampaloc 1, Dasmariñas, 4114 Cavite")
 	company.save()
 	res += 'Updating Company entry <br>'
 
 	company = Company.object.get(hcompany_name = 'iQor')
-	company.hcompany_address = "Quezon City Maginhawa Street"
+	company.hcompany_address = "3rd Floor SM City Dasmariñas, Governor's Dr, Barangay Sampaloc 1, Dasmariñas, 4114 Cavite"
 	company.save()
 	res = ""
 

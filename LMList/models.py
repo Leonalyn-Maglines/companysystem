@@ -2,40 +2,41 @@ from django.db import models
 
 
 class Company(models.Model):
-	hcompany_name = models.TextField(default='')
-	hdate_establish = models.TextField(default='')
-	hcompany_description = models.TextField(default='')
-	hmission = models.TextField(default='')
-	hvission = models.TextField(default='')
+	hcompany_name = models.TextField(max_length=15, default='')
+	hdate_establish = models.TextField(max_length=10, default='')
+	hcompany_description = models.TextField(max_length=60, default='')
+	hmission = models.TextField(max_length=80,default='')
+	hvission = models.TextField(max_length=80,default='')
 	
 	class meta:
 		db_table = "company"
 
 class Branch(models.Model):
-	bcompany_branch = models.TextField(default='')
-	bcompany_address = models.TextField(default='')
-	bcontact_number = models.TextField(default='')
+	bcompany_branch = models.TextField(max_length=15, default='')
+	bcompany_address = models.TextField(max_length=20, default='')
+	bcontact_number = models.CharField(default='',max_length=11)
 	bcompany = models.ForeignKey(Company, default=None, on_delete=models.PROTECT)
 	
 	class meta:
 		db_table = "branch"
 
 class Employee(models.Model):
-	qfull_name = models.TextField(default='')
-	qage = models.TextField(default='')
-	qaddress= models.TextField(default='')
-	gcollege = models.TextField(default='')
-	gsecondary_level = models.TextField(default='')
-	gprimary_level = models.TextField(default='')
+	qfull_name = models.TextField(max_length=120, default='')
+	qbirthday = models.TextField(max_length=10, default='')
+	qage= models.IntegerField( default='')
+	qaddress= models.TextField(max_length=20, default='')
+	gcollege = models.TextField(max_length=20, default='')
+	gsecondary_level = models.TextField(max_length=20, default='')
+	gprimary_level = models.TextField(max_length=20, default='')
 	qbranch= models.ForeignKey(Branch, default=None, on_delete=models.PROTECT)
 	
 	class meta:
 		db_table = "employee"
 
 class Background(models.Model):
-	gwork_experience = models.TextField(default='')
-	gseminars_attended = models.TextField(default='')
-	gskills = models.TextField(default='')
+	gwork_experience = models.TextField(max_length=50,default='')
+	gseminars_attended = models.TextField(max_length=50,default='')
+	gskills = models.TextField(max_length=50, default='')
 	gemployee = models.ForeignKey(Employee, default=None, on_delete=models.PROTECT)
 	
 	class meta:
@@ -43,10 +44,10 @@ class Background(models.Model):
 
 
 class Appointment_Details(models.Model):
-	kcontract_details = models.TextField(default='')
-	ktermination = models.TextField(default='')
-	kpromotions = models.TextField(default='')
-	position = models.TextField(default='')
+	kcontract_details = models.TextField(max_length=20, default='')
+	ktermination = models.TextField(max_length=30,default='')
+	kpromotions = models.TextField(max_length=30, default='')
+	position = models.TextField(max_length=20, default='')
 	kemployee = models.ForeignKey(Employee, default=None, on_delete=models.PROTECT)
 	
 	class meta:

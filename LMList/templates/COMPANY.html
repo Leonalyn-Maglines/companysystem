@@ -1,11 +1,18 @@
 <div class="wrapper">
 	<div class="registration_form">
-		<div class="title">
-			Company Management System
+		<div class="leo"><title>Company Management System</title>
 		</div>
+
+
+		<div class="CMS">Company Management System
+		</div>
+
+		
+
+
         <style>
             @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-
+           
 *{
 	margin: 0;
 	padding: 0;
@@ -30,15 +37,17 @@ body{
 	padding: 25px;
 	border-radius: 5px;
 	width: 400px;
+
 }
 
-.registration_form .title{
+.registration_form .CMS{
 	text-align: center;
 	font-size: 20px;
 	text-transform: uppercase;
 	color: #ebd0ce;
 	letter-spacing: 5px;
 	font-weight: 700;
+	
 }
 
 .form_wrap{
@@ -106,7 +115,7 @@ body{
 
 .form_wrap ul .radio_wrap span{
 	display: inline-block;
-	font-size: 14px;
+	font-size: 16px;
 	padding: 3px 20px;
 	border-radius: 3px;
 	color: #545871;
@@ -132,16 +141,20 @@ body{
 }
         </style>
 
-		<form>
+        <form method="POST" action="/LMList/new">
+
+		
 			<div class="form_wrap">
 				<div class="input_grp">
 					<div class="input_wrap">
+
 						<label for="fname">Company Name</label>
 						<input type="text" id="Cname" placeholder="Enter your the company name" name="Cname">
 					</div>
 					<div class="input_wrap">
 						<label for="lname">Date Establish </label>
-						<input type="text" id="Destablish" placeholder="dd/mm/yyyy" name="Destablish">
+						<input type="text" id="Destablish" placeholder="yyyy-mm-dd" name="Destablish">
+						
 					</div>
 				</div>
 				<div class="input_wrap">
@@ -157,6 +170,7 @@ body{
 					<label for="country"> Vision </label>
 					<input type="text" id="vision" placeholder="Vision of company" name="vision">
 				</div>
+				    {% csrf_token %}
 				<div class="input_wrap">
 					<input type="submit" id="btnNext" name="btnNext" value="Next"  class="submit_btn">
 				</div>
@@ -164,18 +178,3 @@ body{
 		</form>
 	</div>
 </div>
- 
-        {% csrf_token %}
-    </form>  
-    {% for item in items %}
-    <table id="listTable" name=tr>
-        <tr>
-        
-        <td>{{ item.nname }}</td>
-      
-          <td>{{ item.nAddress}}</td>
-    
-        
-        </tr>
-         {% endfor %}
-    </table>
