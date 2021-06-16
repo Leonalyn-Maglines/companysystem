@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>2ndmodel</title>
+    <title>3rd model</title>
     <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono&display=swap" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -11,11 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <style>
-      
-      html, body {
-      min-height: 100%;
-      }
-      body, div, form, input, select, textarea, label { 
+    
+body, div, form, input, select, textarea, label { 
       padding: 0;
       margin: 0;
       outline: none;
@@ -25,7 +22,11 @@
       line-height: 22px;
       background-color: rgb(50, 134, 202);
       }
+      html, body {
+      min-height: 100%;
+      }
       
+     
       legend {
       padding: 10px;      
       font-family: 'Rasa', serif;
@@ -33,6 +34,7 @@
       color: #fff;
       background-color: #020720;
       }
+    
     
       .testbox {
       display: flex;
@@ -163,7 +165,7 @@
       border: none;
       border-radius: 5px; 
       background:  #1a55a1;
-      font-size: 17px;
+      font-size: 16px;
       color: #fff;
       cursor: pointer;
       margin-top: 10px;
@@ -192,75 +194,58 @@
   </head>
   <body>
     <div class="testbox">
-    <form method="POST" action="/LMList/third">
+    <form>
       <div class="banner">
-      
+        
       </div>
       <br/>
       <fieldset>
-        <legend>Branch</legend>
+        <legend>Background</legend>
         <div class="colums">
           <div class="item">
-            <label for="fname"><b>Company Branch</b></label>
-            <input id="location" type="text"  name="location" required/>
+            <label for="fname"><b>Work Experience</b></label>
+            <input id="weperience" type="text"  name="weperience" required/>
           </div>
           <div class="item">
-            <label for="lname"> <b>Company Address</b></label>
-            <input id="Caddress" type="text"   name="Caddress" required/>
+            <label for="lname"> <b>Seminars Attended</b></label>
+            <input id="sattended" type="text"   name="sattended" required/>
           </div>
           <div class="item">
-            <label for="lname"> <b>Company Email</b></label>
-            <input id="Cemail" type="email"   name="Cemail" required/>
-          </div>
-          <div class="item">
-            <form id="Cnumber" action="javascript:void(0)">
-             <div>
-             <label for="Cnumber_phone"><b>Phone No.#:</b></label>
-             <input type="tel" id="Cnumber" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
-             </div>
-
-          <div class="item">
-            <label for="address"><b>Contact No.#</b> </label>
-            <input id="pnumber" type="tel"   name="pnumber" required/>
+            <label for="address"><b>Skills</b> </label>
+            <input id="skills" type="text"   name="skills" required/>
           </div>
           
       </fieldset>
       <br/>
-      {% csrf_token %}
+      <fieldset>
+      <legend>Appointment</legend>
+      <div class="colums">
+        <div class="item">
+            <label for="phone"><b>Contract Details</b> </label>
+            <input id="cetails" type="text"   name="cetails" required/>
+          </div>
+          <div class="item">
+            <label for="saddress"><b>Termination </b></label>
+            <input id="termination" type="text"   name="termination" required/>
+          </div>
+          <div class="item">
+            <label for="city"><b>Promotions</b></label>
+            <input id="promotions" type="text" name="promotions" required/>
+          </div>
+          <div class="item">
+            <label for="zip"><b>Position</b></label>
+            <input id="position" type="text"   name="position" required/>
+          </div>
+          
+      </div>
+      
+      </div>
+      
+      </fieldset>
       <div class="btn-block">
-      <button type="order" >Proceed</button>
+      <button type="order" href="/">Enter</button>
       </div>
     </form>
     </div>
-     <table id="id_table" name='tr'>
-       <tr>
-       {% for qbranch in qbranch.qbranch_set.all %} 
-       <! -- {{ forloop.counter }}:  -->
-               <td>{{ qbranch.hcompany_name }}</td>
-   
-         <td>{{ qbranch.hdate_establish }}</td>
-        
-        <td>{{ qbranch.htype}}</td>
-          </tr>
-        {% endfor %}
-    </table>
-    <script>
-      var phone_input = document.getElementById("Cnumber");
-
-phone_input.addEventListener('input', () => {
- phone_input.setCustomValidity('');
- phone_input.checkValidity();
-});
-
-phone_input.addEventListener('invalid', () => {
- if(phone_input.value === '') {
-   phone_input.setCustomValidity('Enter phone number!');
- } else {
-   phone_input.setCustomValidity('Enter phone number in this format: 123-456-7890');
- }
-});
-  </script>
- 
-
   </body>
 </html>

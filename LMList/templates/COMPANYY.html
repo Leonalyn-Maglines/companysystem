@@ -1,30 +1,20 @@
 <div class="wrapper">
 	<div class="registration_form">
-		<div class="leo"><title>Company Management System</title>
+		<div class="title">
+			Company
 		</div>
-
-
-		<div class="CMS">Company Management System
-		</div>
-
-		
-
-
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
-           
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+
 *{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
 	list-style: none;
 	font-family: 'Montserrat', sans-serif;
+	
 }
 
-body{
-	background: #84889c;
-}
- 
 .wrapper{
 	min-height: 100vh;
 	display: flex;
@@ -33,29 +23,27 @@ body{
 }
 
 .registration_form{
-	background: #545871;
+	background: #4a8ab4;
 	padding: 25px;
 	border-radius: 5px;
 	width: 400px;
-
 }
 
-.registration_form .CMS{
+.registration_form .title{
 	text-align: center;
 	font-size: 20px;
 	text-transform: uppercase;
-	color: #ebd0ce;
+	color: #09090a;
 	letter-spacing: 5px;
 	font-weight: 700;
-	
 }
 
 .form_wrap{
-	margin-top: 35px;
+	margin-top: 15px;
 }
 
 .form_wrap .input_wrap{
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
 .form_wrap .input_wrap:last-child{
@@ -65,7 +53,7 @@ body{
 .form_wrap .input_wrap label{
 	display: block;
 	margin-bottom: 3px;
-	color: #9597a6;
+	color: #050505;
 }
 
 .form_wrap .input_grp{
@@ -85,49 +73,14 @@ body{
 	outline: none;
 }
 
-.form_wrap  input[type="text"]:focus{
-	border-color: #ebd0ce;
-}
-
-.form_wrap ul{
-	background: #fff;
-	padding: 8px 10px;
-	border-radius: 3px;
-	display: flex;
-	justify-content: center;
-}
-
 .form_wrap ul li:first-child{
 	margin-right: 15px;
 }
 
-.form_wrap ul .radio_wrap{
-	position: relative;
-	margin-bottom: 0;
-}
-
-.form_wrap ul .radio_wrap .input_radio{
-	position: absolute;
-	top: 0;
-	right: 0;
-	opacity: 0;
-}
-
-.form_wrap ul .radio_wrap span{
-	display: inline-block;
-	font-size: 16px;
-	padding: 3px 20px;
-	border-radius: 3px;
-	color: #545871;
-}
-
-.form_wrap .input_radio:checked ~ span{
-	background: #ebd0ce;
-}
 
 .form_wrap .submit_btn{
 	width: 100%;
-	background: #ebd0ce;
+	background: #175db9;
 	padding: 10px;
 	border: 0;
 	border-radius: 3px;
@@ -136,30 +89,34 @@ body{
 	cursor: pointer;
 }
 
-.form_wrap .submit_btn:hover{
-	background: #ffd5d2;
+body {
+	background-image: url(https://www.mynewmarkets.com//img/hero-list-your-company-background.png);
+	-webkit-background-size: cover;
+	background-size: cover;
+	background-position: center center;
+	height: 100vh;
+    
 }
-        </style>
 
-        <form method="POST" action="/LMList/new">
+        </style >
 
-		
+        
+		<form method="POST" action="/LMList/next">
+			
 			<div class="form_wrap">
 				<div class="input_grp">
 					<div class="input_wrap">
-
 						<label for="fname">Company Name</label>
-						<input type="text" id="Cname" placeholder="Enter your the company name" name="Cname">
+						<input type="text" id="Cname" placeholder="Enter your fullname" name="Cname">
 					</div>
 					<div class="input_wrap">
 						<label for="lname">Date Establish </label>
-						<input type="text" id="Destablish" placeholder="yyyy-mm-dd" name="Destablish">
-						
+						<input type="date" id="Destablish" placeholder="dd/mm/yyyy" name="Destablish">
 					</div>
 				</div>
 				<div class="input_wrap">
 					<label for="email">Company Description</label>
-					<input type="text" id="Cdescription" placeholder="Enter the company description" name="Cdescription">
+					<input type="text" id="Cdescrption" placeholder="Enter a company description" name="Cdescrption">
 				</div>
 			
 				<div class="input_wrap">
@@ -167,12 +124,31 @@ body{
 					<input type="text" id="mission" placeholder="Mission of company" name="mission">
 				</div>
 				<div class="input_wrap">
-					<label for="country"> Vision </label>
-					<input type="text" id="vision" placeholder="Vision of company" name="vision">
+					<label for="country"> Vission </label>
+					<input type="text" id="vision" placeholder="Vission of company" name="vission">
 				</div>
-				    {% csrf_token %}
+
+<p>Select the type of company.</p>
+
+<select id="mySelect" onchange="myFunction()">
+  <option value="Selection">Selection
+  <option value="Partnership">Partnership
+  <option value="Limited liability company">Limited liability company
+  <option value="Corporation">Corporation
+  <option value="Cooperative">Cooperative
+</select>
+
+<p id="demo"></p>
+<script>
+function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = "You selected: " + x;
+}
+</script>
+				
+                  {% csrf_token %}
 				<div class="input_wrap">
-					<input type="submit" id="btnNext" name="btnNext" value="Next"  class="submit_btn">
+					<input   type="submit" id="btnContinue" name="btnContinue" value="Continue" class="submit_btn">
 				</div>
 			</div>
 		</form>

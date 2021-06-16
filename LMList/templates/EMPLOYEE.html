@@ -25,7 +25,7 @@
       line-height: 22px;
       background-color: rgb(50, 134, 202);
       }
-      
+     
       legend {
       padding: 10px;      
       font-family: 'Rasa', serif;
@@ -79,22 +79,13 @@
       .item:hover p, .item:hover i, .question:hover p, .question label:hover, input:hover::placeholder {
       color:  #002966;
       }
-      .checkbox input[type=checkbox] {
-      display:inline-block;
-      height:15px;
-      width:15px;
-      margin-right:5px;
-      vertical-align:text-top;
-      }
+     
       .item input:hover, .item select:hover, .item textarea:hover {
       border: 1px solid transparent;
       box-shadow: 0 0 3px 0  #006622;
       color: #006622;
       }
-      .item {
-      position: relative;
-      margin: 10px 0;
-      }
+      
       .item span {
       color: red;
       }
@@ -149,6 +140,10 @@
       input[type=radio]:checked + label:after {
       opacity: 1;
       }
+      .item {
+      position: relative;
+      margin: 10px 0;
+      }
       .flax {
       display:flex;
       justify-content:space-around;
@@ -192,75 +187,53 @@
   </head>
   <body>
     <div class="testbox">
-    <form method="POST" action="/LMList/third">
+    <form method="POST" action="/LMList/fourth">
       <div class="banner">
-      
+       
       </div>
       <br/>
       <fieldset>
-        <legend>Branch</legend>
+        <legend>Employee</legend>
         <div class="colums">
           <div class="item">
-            <label for="fname"><b>Company Branch</b></label>
-            <input id="location" type="text"  name="location" required/>
-          </div>
-          <div class="item">
-            <label for="lname"> <b>Company Address</b></label>
-            <input id="Caddress" type="text"   name="Caddress" required/>
-          </div>
-          <div class="item">
-            <label for="lname"> <b>Company Email</b></label>
-            <input id="Cemail" type="email"   name="Cemail" required/>
-          </div>
-          <div class="item">
-            <form id="Cnumber" action="javascript:void(0)">
-             <div>
-             <label for="Cnumber_phone"><b>Phone No.#:</b></label>
-             <input type="tel" id="Cnumber" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
-             </div>
-
-          <div class="item">
-            <label for="address"><b>Contact No.#</b> </label>
-            <input id="pnumber" type="tel"   name="pnumber" required/>
-          </div>
-          
-      </fieldset>
+              <label for="phone"><b>Full name</b> <span>*</span></label>
+              <input id="Fname" type="text"   name="Fname" required/>
+            </div>
+            <div class="item">
+              <label for="saddress"><b>College </b><span>*</span></label>
+              <input id="college" type="text"   name="college" required/>
+            </div>
+            <div class="item">
+              <label for="city"><b>Birthday</b><span>*</span></label>
+              <input id="birthday" type="date" name="birthday" required/>
+            </div>
+            <div class="item">
+              <label for="zip"><b>Primary Level</b><span>*</span></label>
+              <input id="primary" type="text"   name="primary" required/>
+            </div>
+            <div class="item">
+              <label for="country"><b>Age</b><span>*</span></label>
+              <input id="age" type="number"   name="age" required/>
+            </div>
+            <div class="item">
+              <label for="country"><b>Secondary Level</b> <span>*</span></label>
+              <input id="zip" type="text" name="zip" required/>
+            </div>
+            <div class="item">
+              <label for="country"><b>Address</b> <span>*</span></label>
+              <input id="address" type="text"   name="address" required/>
+            </div>
+        </div>
+        
+        </div>
+        
+        </fieldset>
       <br/>
-      {% csrf_token %}
+       {% csrf_token %}
       <div class="btn-block">
       <button type="order" >Proceed</button>
       </div>
     </form>
     </div>
-     <table id="id_table" name='tr'>
-       <tr>
-       {% for qbranch in qbranch.qbranch_set.all %} 
-       <! -- {{ forloop.counter }}:  -->
-               <td>{{ qbranch.hcompany_name }}</td>
-   
-         <td>{{ qbranch.hdate_establish }}</td>
-        
-        <td>{{ qbranch.htype}}</td>
-          </tr>
-        {% endfor %}
-    </table>
-    <script>
-      var phone_input = document.getElementById("Cnumber");
-
-phone_input.addEventListener('input', () => {
- phone_input.setCustomValidity('');
- phone_input.checkValidity();
-});
-
-phone_input.addEventListener('invalid', () => {
- if(phone_input.value === '') {
-   phone_input.setCustomValidity('Enter phone number!');
- } else {
-   phone_input.setCustomValidity('Enter phone number in this format: 123-456-7890');
- }
-});
-  </script>
- 
-
   </body>
 </html>

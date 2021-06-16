@@ -28,27 +28,27 @@ class Compay_Management_System(LiveServerTestCase):
 	def test_Compay_Management_System(self):
 	 self.browser.get('http://localhost:8000/')
 	 
-	 self.assertIn('Company Management System',self.browser.title)
+	 self.assertIn('Company',self.browser.title)
 	 #header_text = self.browser.find_element_by_tag_name('h1').text
 	 #self.assertIn('Company Management System', header_text)
 	 Cname = self.browser.find_element_by_id('Cname')
-	 self.assertEqual(Cname.get_attribute('placeholder'),'Enter your the company name')
+	 self.assertEqual(Cname.get_attribute('placeholder'),'Enter your Company name')
 	 Cname.click()
 	 time.sleep(1)
 	 Cname.send_keys('iQor')
 	 time.sleep(1)
 	 Destablish = self.browser.find_element_by_id('Destablish')
-	 self.assertEqual(Destablish.get_attribute('placeholder'),"YYYY-MM-DD HH:MM")
+	 self.assertEqual(Destablish.get_attribute('placeholder'),"dd/mm/yyyy")
 	 Destablish.click()
 	 time.sleep(1)
 	 Destablish.send_keys('08-24-2000')
 	 time.sleep(1)
 
-	 Cdescription = self.browser.find_element_by_id('Cdescription')
-	 self.assertEqual(Cdescription.get_attribute('placeholder'),'Enter the company description')
-	 Cdescription.click()
+	 Cdescrption = self.browser.find_element_by_id('Cdescription')
+	 self.assertEqual(Cdescrption.get_attribute('placeholder'),'Enter a company description')
+	 Cdescrption.click()
 	 time.sleep(1)
-	 Cdescription.send_keys('iQor is a managed services provider of customer engagement and technology-enabled BPO solutions.')
+	 Cdescrption.send_keys('iQor is a managed services provider of customer engagement and technology-enabled BPO solutions.')
 	 time.sleep(1)
 
 	 mission = self.browser.find_element_by_id('mission')
@@ -65,8 +65,8 @@ class Compay_Management_System(LiveServerTestCase):
 	 vision.send_keys('Making people happy is at the heart of what we do.')
 	 time.sleep(1)
 
-	 btnNext = self.browser.find_element_by_id('btnNext')
-	 btnNext.click()
+	 btnContinue = self.browser.find_element_by_id('btnContinue')
+	 btnContinue.click()
 	 time.sleep(2)
 
 

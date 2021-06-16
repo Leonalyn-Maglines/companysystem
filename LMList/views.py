@@ -1,15 +1,29 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from LMList.models import Branch, Company
+from LMList.models import Branch, Company, Employee, Background, Appointment_Details
 
 def home_page(request):
     companys = Company.objects.all()
-
-    return render(request, 'COMPANY.html',{'companys' : companys})
+    return render(request, 'homepage.html',{'companys' : companys})
 
 def view_list(request, companyid):
     company_ = Company.objects.get(id=companyid)
     return render(request, 'BRANCH.html', {'company': company_})
+
+def form_list(request ):
+    return render(request, 'COMPANYY.html' )
+
+def contact_list(request ):
+    return render(request, 'CONTACT.html' )
+
+def next_list(request ):
+    return render(request, 'BRANCH.html' )
+
+def third_list(request ):
+    return render(request, 'EMPLOYEE.html' )
+
+def fourth_list(request ):
+    return render(request, '4-5model.html' )
 
 def new_list(request):
     New_Company = Company.objects.create()

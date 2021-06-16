@@ -7,7 +7,8 @@ class Company(models.Model):
 	hcompany_description = models.TextField(max_length=60, default='')
 	hmission = models.TextField(max_length=80,default='')
 	hvission = models.TextField(max_length=80,default='')
-	
+	htcompany = models.TextField(max_length=80,default='')
+	htype = models.TextField(max_length=30,default='')
 	class meta:
 		db_table = "company"
 
@@ -15,6 +16,8 @@ class Branch(models.Model):
 	bcompany_branch = models.TextField(max_length=15, default='')
 	bcompany_address = models.TextField(max_length=20, default='')
 	bcontact_number = models.CharField(default='',max_length=11)
+	bphone_number = models.CharField(default='',max_length=11)
+	bemail = models.EmailField(default='',max_length=40)
 	bcompany = models.ForeignKey(Company, default=None, on_delete=models.PROTECT)
 	
 	class meta:
