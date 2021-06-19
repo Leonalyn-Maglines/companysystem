@@ -1,3 +1,7 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
 <div class="wrapper">
 	<div class="registration_form">
 		<div class="title">
@@ -56,14 +60,7 @@
 	color: #050505;
 }
 
-.form_wrap .input_grp{
-	display: flex;
-	justify-content: space-between;
-}
 
-.form_wrap .input_grp  input[type="text"]{
-	width: 165px;
-}
 
 .form_wrap  input[type="text"]{
 	width: 100%;
@@ -98,22 +95,31 @@ body {
     
 }
 
-        </style >
 
-        
+ </style >
+
+
+		
+ </head>
+
+
+	<body>
+
+
 		<form method="POST" action="/LMList/next">
+		
 			
 			<div class="form_wrap">
-				<div class="input_grp">
-					<div class="input_wrap">
-						<label for="fname">Company Name</label>
-						<input type="text" id="Cname" placeholder="Enter your fullname" name="Cname">
-					</div>
-					<div class="input_wrap">
-						<label for="lname">Date Establish </label>
-						<input type="date" id="Destablish" placeholder="dd/mm/yyyy" name="Destablish">
-					</div>
+				<label style="font-family: 'Montserrat', sans-serif;" label > Date Establish: 
+					<input type=date id = DOB onblur = "ageCalculator()" name="birthday" > </label>
+					<span   id = "message"> </span>  
+					<label style= " margin-left: 30%; margin-top: 8%; font-size: 17px; color:rgb(7, 6, 6) " id="result" align="center" ></label> 
+
+				<div class="input_wrap">
+					<label for="fname">Company Name</label>
+					<input type="text" id="Cname" placeholder="Enter your fullname" name="Cname">
 				</div>
+
 				<div class="input_wrap">
 					<label for="email">Company Description</label>
 					<input type="text" id="Cdescrption" placeholder="Enter a company description" name="Cdescrption">
@@ -127,30 +133,43 @@ body {
 					<label for="country"> Vission </label>
 					<input type="text" id="vision" placeholder="Vission of company" name="vission">
 				</div>
-
-<p>Select the type of company.</p>
-
-<select id="mySelect" onchange="myFunction()">
-  <option value="Selection">Selection
-  <option value="Partnership">Partnership
-  <option value="Limited liability company">Limited liability company
-  <option value="Corporation">Corporation
-  <option value="Cooperative">Cooperative
-</select>
-
-<p id="demo"></p>
-<script>
-function myFunction() {
-  var x = document.getElementById("mySelect").value;
-  document.getElementById("demo").innerHTML = "You selected: " + x;
-}
-</script>
 				
-                  {% csrf_token %}
+				{% csrf_token %}
 				<div class="input_wrap">
-					<input   type="submit" id="btnContinue" name="btnContinue" value="Continue" class="submit_btn">
+					<input type="submit" id="btnContinue" name="btnContinue" value="Continue" class="submit_btn">
 				</div>
 			</div>
 		</form>
 	</div>
 </div>
+<script type="text/javascript">
+        
+    
+    function ageCalculator() {
+        var userinput = document.getElementById("DOB").value;
+        var dob = new Date(userinput);
+        if(userinput==null || userinput=='') {
+          document.getElementById("message").innerHTML = "**Choose a date please!";  
+          return false; 
+        } else {
+        
+        //calculate month difference from current date in time
+        var month_diff = Date.now() - dob.getTime();
+        
+        //convert the calculated difference in date format
+        var age_dt = new Date(month_diff); 
+        
+        //extract year from date    
+        var year = age_dt.getUTCFullYear();
+        
+        //now calculate the age of the user
+        var age = Math.abs(year - 1970);
+        
+        //display the calculated age
+        return document.getElementById("result").innerHTML =  
+                 "Age is: " + age + " years. ";
+        }
+    }
+    
+    </script>
+</body>

@@ -6,7 +6,7 @@ class Company(models.Model):
 	hdate_establish = models.TextField(max_length=10, default='')
 	hcompany_description = models.TextField(max_length=60, default='')
 	hmission = models.TextField(max_length=80,default='')
-	hvission = models.TextField(max_length=80,default='')
+	hvision = models.TextField(max_length=80,default='')
 	htcompany = models.TextField(max_length=80,default='')
 	htype = models.TextField(max_length=30,default='')
 	class meta:
