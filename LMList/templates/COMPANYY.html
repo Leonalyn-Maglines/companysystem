@@ -132,6 +132,22 @@ body {
 				<div class="input_wrap">
 					<label for="country"> Vission </label>
 					<input type="text" id="vision" placeholder="Vission of company" name="vission">
+
+						<div class="input_wrap">
+					<label for="city"> Types of Company</label>
+					<select id="mySelect" onchange="myFunction()">
+					<option value="Selecttion">Selection</option>
+						<option value="Sole proprietorship">Sole proprietorship</option>
+						<option value="Partnership">Partnership</option>
+						<option value="Limited liability company">Limited liability company</option>
+						<option value="Corporation ">Corporation</option>
+						<option value="Cooperative">Cooperative</option>
+					  </select>
+					  <p id="demo"></p>
+					  
+				</div>
+
+
 				</div>
 				
 				{% csrf_token %}
@@ -167,9 +183,14 @@ body {
         
         //display the calculated age
         return document.getElementById("result").innerHTML =  
-                 "Age is: " + age + " years. ";
+                 "Around: " + age + " years. ";
         }
     }
+
+    	function myFunction() {
+  var x = document.getElementById("mySelect").value;
+  document.getElementById("demo").innerHTML = "You selected: " + x;
+}
     
     </script>
 </body>

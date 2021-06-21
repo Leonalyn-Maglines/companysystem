@@ -25,6 +25,23 @@ def third_list(request ):
 def fourth_list(request ):
     return render(request, '4-5model.html' )
 
+def fifth_list(request ):
+  	return render(request, 'about.html' )
+
+def service_list(request ):
+  	return render(request, 'services.html' )
+
+def works_list(request ):
+  	return render(request, 'howworks.html' )
+
+def homepage_list(request ):
+  	return render(request, 'homepage.html' )
+
+def confirmation_list(request ):
+  	return render(request, 'LAST.html' )
+
+
+
 def new_list(request):
     New_Company = Company.objects.create()
     Company.objects.create(hcompany_name =request.POST['Cname'],hdate_establish=request.POST['Destablish'],hcompany_description=request.POST['Cdescription'],hmission=request.POST['mission'],hvission=request.POST['vision'])
