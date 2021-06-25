@@ -1,6 +1,6 @@
 body::after {
   content: "";
-  background: url(/static/image/image3.jpg);
+  background: url(/static/image/image6.jpg);
   top: 0;
   left: 0;
   bottom: 0;
@@ -10,7 +10,7 @@ body::after {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-image: fixed;
- 
+  
 }
 
 .about{
@@ -18,14 +18,12 @@ font-size: 3vw;
 margin:0;
 position: absolute;
 text-align: center;
+color: black;
 line-height: 60px;
 word-spacing: 6px;
 margin-top: 40px;
-font-family: 'Old Standard TT', serif;
-position: absolute;
-color: rgba(0, 0, 0, 0.986);
-}
 
+}
 
 body, html {
   height: 100%;
@@ -33,7 +31,10 @@ body, html {
 }
 
 
-
+ {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
 
 .topnav {
   overflow: hidden;

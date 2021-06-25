@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from LMList.models import Branch, Company, Employee, Background, Appointment_Details
+from django.views.decorators.csrf import csrf_exempt
 
 def home_page(request):
     companys = Company.objects.all()
