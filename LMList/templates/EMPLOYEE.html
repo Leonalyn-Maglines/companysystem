@@ -58,6 +58,37 @@
               <input id="address" type="text"   name="address" required/>
             </div>
         </div>
+
+        <script type="text/javascript">
+    function ShowHideDiv() {
+        var sstatus = document.getElementById("sstatus");
+        var mmartial = document.getElementById("mmartial");
+        mmartial.style.display = sstatus.value == "M" ? "block" : "none";
+    }
+</script>
+<span>Martial Status</span>
+    <select id = "sstatus" onchange = "ShowHideDiv()">
+        <option >Select</option>
+        <option value="N">Unmarried</option>
+        <option value="M">Married</option>            
+    </select>
+<hr />
+<div id="mmartial" style="display: none">
+    Name of Wife/Husband:
+    <input type="text" id="txtmartialstatus" />
+</div>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $("#sstatus").change(function () {
+            if ($(this).val() == "M") {
+                $("#mmartial").show();
+            } else {
+                $("#mmartial").hide();
+            }
+        });
+    });
+</script>
         
         </div>
         <script type="text/javascript">
