@@ -42,7 +42,7 @@ def confirmation_list(request ):
   	return render(request, 'LAST.html' )
 
 
-'''def Mainpage(request): 
+def Mainpage(request): 
 	bcompany = Company.objects.all()
 	return render(request, 'COMPANYY.html',{'bcompany':bcompany})
 
@@ -60,7 +60,7 @@ def add_info(request, bcompany_id):
 	Branch.objects.create(bcompany_branch=request.POST['location'],bcompany_address=request.POST['Caddress'],bemail=request.POST['Cemail'],bphone_number=request.POST['Cnumber'],bcontact_number=request.POST['pnumber'],bcompany=bcompany_)
 	return redirect(f'/LMList/{bcompany_.id}/')
 
-def UpdateCompany(request, id):
+'''def UpdateCompany(request, id):
 	company_ = Company.objects.get(id=id)
 	company.hcompany_name = request.POST['Cname']
 	company.hdate_establish = request.POST['date']
@@ -79,7 +79,7 @@ def DeleteCompany(request, id):
 def EditCompany(request, id):
 	bcompanyId = Company.objects.get(id=id)
 	context = {'bcompany_':bcompanyId}
-	return render (request, 'companyedit.html',context)'''
+	return render (request, 'companyedit.html',context)
 
 
 
@@ -96,7 +96,7 @@ def EditCompany(request, id):
 
 
 
-'''def new_list(request):
+def new_list(request):
     New_Company = Company.objects.create()
     Company.objects.create(hcompany_name =request.POST['Cname'],hdate_establish=request.POST['Destablish'],hcompany_description=request.POST['Cdescription'],hmission=request.POST['mission'],hvission=request.POST['vision'])
     return redirect(f'/LMList/{New_Company.id}/')

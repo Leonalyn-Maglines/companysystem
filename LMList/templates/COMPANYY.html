@@ -28,12 +28,12 @@
 	<body>
 
 
-		<form method="POST" action="/LMList/next">
+		<form method="POST" action="/LMList/next_list">
 		
 			
 			<div class="form_wrap">
 				<label style="font-family: 'Montserrat', sans-serif;" label > Date Establish: 
-					<input type=date id = DOB onblur = "ageCalculator()" name="birthday" > </label>
+					<input type=date id = "date" onblur = "ageCalculator()" name="date" > </label>
 					<span   id = "message"> </span>  
 					<label style= " margin-left: 30%; margin-top: 8%; font-size: 17px; color:rgb(7, 6, 6) " id="result" align="center" ></label> 
 
@@ -52,12 +52,12 @@
 					<input type="text" id="mission" placeholder="Mission of company" name="mission"required/>
 				</div>
 				<div class="input_wrap">
-					<label for="country"> Vission </label>
-					<input type="text" id="vision" placeholder="Vission of company" name="vission"required/>
+					<label for="country"> Vision </label>
+					<input type="text" id="vision" name="vision" placeholder="Vission of company" name="vision"required/>
 
 						<div class="input_wrap">
 					<label for="city"> Types of Company</label>
-					<select id="mySelect" onchange="myFunction()">
+					<select id="mySelect" name="mySelect"onchange="myFunction()">
 					<option value="Selecttion">Selection</option>
 						<option value="Sole proprietorship">Sole proprietorship</option>
 						<option value="Partnership">Partnership</option>
@@ -68,6 +68,7 @@
 					  <p id="demo"></p>
 					  
 				</div>
+				
 
 
 				</div>
@@ -84,7 +85,7 @@
         
     
     function ageCalculator() {
-        var userinput = document.getElementById("DOB").value;
+        var userinput = document.getElementById("date").value;
         var dob = new Date(userinput);
         if(userinput==null || userinput=='') {
           document.getElementById("message").innerHTML = "**Choose a date please!";  

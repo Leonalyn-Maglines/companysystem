@@ -11,16 +11,18 @@
  
   </head>
   <div class="topnav">
-    <a class="active" href="/LMList/homepage">Home</a>
+    <a class="active" href="/LMList/form">Home</a>
     <a href="/LMList/service">Services</a>
     <a href="/LMList/works">How it Works</a>
     <a href="/LMList/fifth">About</a>
   </div>
   <body>
 
-   
+   Date Establish: {{company.hdate_establish}} <br> Company Name: {{company.hcompany_name}} <br> Types of Company: {{company.htcompany}}<br>
+   <a href="/LMList/{{company.id}}/edit">Edit Company Branch</a>
     <div class="testbox">
-    <form method="POST" action="/LMList/third">
+    <form method="POST" action="/LMList/{{company.id}}/add_info">
+       {% csrf_token %}
       <div class="banner">
       
       </div>
@@ -44,7 +46,7 @@
             <form id="Cnumber" action="javascript:void(0)">
              <div>
              <label for="Cnumber_phone"><b>Phone No.#:</b></label>
-             <input type="tel" id="Cnumber" name="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
+             <input type="tel" id="Cnumber" name="Cnumber" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required/>
              </div>
 
           <div class="item">
@@ -54,24 +56,30 @@
           
       </fieldset>
       <br/>
-      {% csrf_token %}
+     
       <div class="btn-block">
       <button type="order" >Proceed</button>
       </div>
     </form>
+    <table name=tr>
+      <tr>
+       <th>Company Branch</th>
+       <th>Company Address</th>
+       <th>Company Email</th>
+       <th>Phone No.#</th>
+       <th>Contact No.#</th>
+     
+    {% for qbranch in bcompany.qbranchs_set.all %}
+    <tr>
+      <td>{{ qbranch.bcompany_branch }}</td>
+      <td>{{ qbranch.bcompany_address }}</td>
+      <td>{{ qbranch.bcontact_number }}</td>
+      <td>{{ qbranch.bemail }}</td>
+      <td>{{ qbranch.bphone_number }}</td>
+      <td>{{ qbranch.bemail }}</td>
+    </tr> {% endfor %} </tr> </table>
     </div>
-     <table id="id_table" name='tr'>
-       <tr>
-       {% for qbranch in qbranch.qbranch_set.all %} 
-       <! -- {{ forloop.counter }}:  -->
-               <td>{{ qbranch.hcompany_name }}</td>
    
-         <td>{{ qbranch.hdate_establish }}</td>
-        
-        <td>{{ qbranch.htype}}</td>
-          </tr>
-        {% endfor %}
-    </table>
     <script>
       var phone_input = document.getElementById("Cnumber");
 
