@@ -28,39 +28,44 @@
 	<body>
 
 
-		<form method="POST" action="/update/{{bcompanys.id}}">
+		<form method="POST" action="update/{{bcompanys.id}}">
 		
 			
 			<div class="form_wrap">
 				<label style="font-family: 'Montserrat', sans-serif;" label > Date Establish: 
-					<input value="{{bcompanys.hdate_establish}}" type=date id = "date" onblur = "ageCalculator()" name="date" > </label>
+					<input value="{{bcompanys.hdate_establish}}" type=date  onblur = "ageCalculator()" name="date" > </label>
 					<span   id = "message"> </span>  
 					<label style= " margin-left: 30%; margin-top: 8%; font-size: 17px; color:rgb(7, 6, 6) " id="result" align="center" ></label> 
 
 				<div class="input_wrap">
 					<label for="fname">Company Name</label>
-					<input type="text" id="Cname" name="Cname" value="{{bcompanys.hcompany_name}}" required/>
+					<input type="text"  name="Cname" value="{{bcompanys.hcompany_name}}" required/>
 				</div>
 
 				<div class="input_wrap">
 					<label for="email">Company Description</label>
-					<input type="text" id="Cdescrption" name="Cdescrption" value="{{bcompanys.hcompany_description}}" required/>
+					<input type="text"  name="Cdescrption" value="{{bcompanys.hcompany_description}}" required/>
 				</div>
 			
 				<div class="input_wrap">
 					<label for="city"> Mission </label>
-					<input type="text" id="mission"  name="mission"  value="{{bcompanys.hmission}}"required/>
+					<input type="text"  name="mission"  value="{{bcompanys.hmission}}"required/>
 				</div>
 				<div class="input_wrap">
 					<label for="country"> Vision </label>
-					<input type="text" id="vision" name="vision" name="vision"  value="{{bcompanys.hcompany_name}}"required/>
+					<input type="text" name="vision" name="vision"  value="{{bcompanys.hcompany_name}}"required/>
 
 						<div class="input_wrap">
 					<label for="city"> Types of Company</label>
-					<input type="text" name="mySelect" id="mySelect">
-
-					<select id="mySelect" value="{{bcompanys.htcompany}}" name="mySelect"onchange="myFunction()">
-					<option value="{{bcompanys.htcompany}}"></option>
+					<select id="mySelect" name="mySelect"onchange="myFunction()">
+					<option value="{{bcompanys.htcompany}}">{{bcompanys.htcompany}}</option>
+						<option value="Sole proprietorship">Sole proprietorship</option>
+						<option value="Partnership">Partnership</option>
+						<option value="Limited liability company">Limited liability company</option>
+						<option value="Corporation ">Corporation</option>
+						<option value="Cooperative">Cooperative</option>
+					  </select>
+					  <p id="demo"></p>
 					  </select>
 					  <p id="demo"></p>
 					  

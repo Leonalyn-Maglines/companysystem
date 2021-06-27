@@ -50,7 +50,7 @@ def confirmation_list(request ):
 
 def edit(request, id):
 	bcompanys = Company.objects.get(id=id)
-	context = {'bcompanys_':bcompanys}
+	context = {'bcompanys':bcompanys}
 	return render (request, 'companyedit.html',context)
 
 def update(request, id):

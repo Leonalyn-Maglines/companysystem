@@ -11,59 +11,14 @@
  
   </head>
   <div class="topnav">
-    <a class="active" href="/LMList/form">Home</a>
+    <a class="active" href="/LMList/homepage">Home</a>
     <a href="/LMList/third">Employee</a>
     <a href="/LMList/fourth">Background/Appointmet</a>
     <a href="/LMList/service">Services</a>
     <a href="/LMList/works">How it Works</a>
     <a href="/LMList/fifth">About</a>
   </div>
-  <style>
-    @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
-*{
- margin:0;
- padding: 0;
- outline: 0;
-}
-
-table{
- position: absolute;
- z-index: 2;
- left: 50%;
- top: 110%;
- transform: translate(-50%,-50%);
- width: 60%; 
- border-collapse: collapse;
- border-spacing: 0;
- box-shadow: 0 2px 15px rgba(64,64,64,.7);
- border-radius: 12px 12px 0 0;
- overflow: hidden;
-
-}
-td , th{
- padding: 5px 10px;
- text-align: center;
  
-
-}
-th{
- background-color: #5ec2e0;
- color: #fafafa;
- font-family: 'Open Sans',Sans-serif;
- font-weight: 40;
- text-transform: uppercase;
-
-}
-tr{
- width: 40%;
- background-color: #fafafa;
- font-family: 'Montserrat', sans-serif;
-}
-tr:nth-child(even){
- background-color: #eeeeee;
-}
-</style>
-
   
   <body>
 
@@ -119,7 +74,8 @@ tr:nth-child(even){
           <th>Phone No.#</th>
           <th>Company Email</th>
           <th>Contact No.#</th>
-          <th>EDIT/DELETE</th>
+
+
       
     {% for branch in bcompany.branch_set.all %}
     <tr>
