@@ -1,6 +1,8 @@
+
+
 body::after {
   content: "";
-  background: url(/static/image/image6.jpg);
+  background: url(/static/image/image7.jpg);
   top: 0;
   left: 0;
   bottom: 0;
@@ -10,7 +12,6 @@ body::after {
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-image: fixed;
-  
 }
 .about{
 font-size: 3.9vw;

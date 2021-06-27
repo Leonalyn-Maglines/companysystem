@@ -18,7 +18,7 @@ class Branch(models.Model):
 	bemail = models.TextField(default='',max_length=30)
 	bphone_number = models.CharField(default='',max_length=11)
 	bemail = models.EmailField(default='',max_length=40)
-	bcompany = models.ForeignKey(Company, default=None, on_delete=models.PROTECT)
+	bcompany = models.ForeignKey(Company, default=None, on_delete=models.CASCADE)
 	
 	class meta:
 		db_table = "branch"
@@ -32,7 +32,7 @@ class Employee(models.Model):
 	gsecondary_level = models.TextField(max_length=20, default='')
 	gprimary_level = models.TextField(max_length=20, default='')
 	gstatus = models.TextField(default='')
-	qbranch= models.ForeignKey(Branch, default=None, on_delete=models.PROTECT)
+	qbranch= models.ForeignKey(Branch, default=None, on_delete=models.CASCADE)
 	
 	class meta:
 		db_table = "employee"
@@ -41,7 +41,7 @@ class Background(models.Model):
 	gwork_experience = models.TextField(max_length=50,default='')
 	gseminars_attended = models.TextField(max_length=50,default='')
 	gskills = models.TextField(max_length=50, default='')
-	gemployee = models.ForeignKey(Employee, default=None, on_delete=models.PROTECT)
+	gemployee = models.ForeignKey(Employee, default=None, on_delete=models.CASCADE)
 	
 	class meta:
 		db_table = "background"
@@ -52,7 +52,7 @@ class Appointment_Details(models.Model):
 	ktermination = models.TextField(max_length=30,default='')
 	kpromotions = models.TextField(max_length=30, default='')
 	position = models.TextField(max_length=20, default='')
-	kemployee = models.ForeignKey(Employee, default=None, on_delete=models.PROTECT)
+	kemployee = models.ForeignKey(Employee, default=None, on_delete=models.CASCADE)
 	
 	class meta:
 		db_table = "appoinment"

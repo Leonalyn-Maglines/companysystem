@@ -9,13 +9,56 @@
 		</div>
 		 <link rel="stylesheet" href="/static/css/company.css" />
 		 <style>
+ @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto')
 		body {
 	background: url(/static/image/image2.png);
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-position: center center;
-	height: 100vh;
-    
+	height: 100vh;}
+*{
+ margin:0;
+ padding: 0;
+ outline: 0;
+}
+
+table{
+ position: absolute;
+ z-index: 2;
+ left: 50%;
+ top: 110%;
+ transform: translate(-50%,-50%);
+ width: 60%; 
+ border-collapse: collapse;
+ border-spacing: 0;
+ box-shadow: 0 2px 15px rgba(64,64,64,.7);
+ border-radius: 12px 12px 0 0;
+ overflow: hidden;
+
+}
+td , th{
+ padding: 5px 10px;
+ text-align: center;
+ 
+
+}
+th{
+ background-color: #5ec2e0;
+ color: #fafafa;
+ font-family: 'Open Sans',Sans-serif;
+ font-weight: 40;
+ text-transform: uppercase;
+
+}
+tr{
+ width: 40%;
+ background-color: #fafafa;
+ font-family: 'Montserrat', sans-serif;
+}
+tr:nth-child(even){
+ background-color: #eeeeee;
+}
+
 }
 
 		 </style>
@@ -28,7 +71,7 @@
 	<body>
 
 
-		<form method="POST" action="/LMList/next_list">
+		<form method="POST" action="/new_Branch">
 		
 			
 			<div class="form_wrap">
@@ -78,6 +121,7 @@
 					<input type="submit" id="btnContinue" name="btnContinue" value="Continue" class="submit_btn">
 				</div>
 			</div>
+			
 		</form>
 	</div>
 </div>
@@ -91,20 +135,10 @@
           document.getElementById("message").innerHTML = "**Choose a date please!";  
           return false; 
         } else {
-        
-        //calculate month difference from current date in time
         var month_diff = Date.now() - dob.getTime();
-        
-        //convert the calculated difference in date format
         var age_dt = new Date(month_diff); 
-        
-        //extract year from date    
         var year = age_dt.getUTCFullYear();
-        
-        //now calculate the age of the user
         var age = Math.abs(year - 1970);
-        
-        //display the calculated age
         return document.getElementById("result").innerHTML =  
                  "Around: " + age + " years. ";
         }
@@ -117,3 +151,26 @@
     
     </script>
 </body>
+ <table name=tr>
+ 	<div class="filter">
+         </div>
+ 	 <tr>
+         
+          <th>Date Establish</th>
+          <th>Company Name</th>
+          <th>Description</th>
+          <th>Mission</th>
+          <th>Vision</th>
+          <th>Types of Company</th>
+<tr> {% for bcompany in bcompanys %}
+			
+		        <td> <a href=/{{bcompany.id}}>{{bcompany.hcompany_name}}</a></td>
+		        <td>{{bcompany.hdate_establish}}</td> 
+			    <td>{{bcompany.hcompany_description}}</td> 
+			    <td>{{bcompany.hmission}}</td> 
+			    <td>{{bcompany.hvision}}</td> 
+			    <td>{{bcompany.htcompany}}</td> 
+			    <td><a href="edit/{{bcompany.id}}">Edit</a></td>
+				<td><a href="delete/{{bcompany.id}}">Delete</a></td>
+		</tr> {% endfor %}
+		</table>

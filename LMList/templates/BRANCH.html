@@ -12,16 +12,64 @@
   </head>
   <div class="topnav">
     <a class="active" href="/LMList/form">Home</a>
+    <a href="/LMList/third">Employee</a>
+    <a href="/LMList/fourth">Background/Appointmet</a>
     <a href="/LMList/service">Services</a>
     <a href="/LMList/works">How it Works</a>
     <a href="/LMList/fifth">About</a>
   </div>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat|Open+Sans|Roboto');
+*{
+ margin:0;
+ padding: 0;
+ outline: 0;
+}
+
+table{
+ position: absolute;
+ z-index: 2;
+ left: 50%;
+ top: 110%;
+ transform: translate(-50%,-50%);
+ width: 60%; 
+ border-collapse: collapse;
+ border-spacing: 0;
+ box-shadow: 0 2px 15px rgba(64,64,64,.7);
+ border-radius: 12px 12px 0 0;
+ overflow: hidden;
+
+}
+td , th{
+ padding: 5px 10px;
+ text-align: center;
+ 
+
+}
+th{
+ background-color: #5ec2e0;
+ color: #fafafa;
+ font-family: 'Open Sans',Sans-serif;
+ font-weight: 40;
+ text-transform: uppercase;
+
+}
+tr{
+ width: 40%;
+ background-color: #fafafa;
+ font-family: 'Montserrat', sans-serif;
+}
+tr:nth-child(even){
+ background-color: #eeeeee;
+}
+</style>
+
+  
   <body>
 
-   Date Establish: {{company.hdate_establish}} <br> Company Name: {{company.hcompany_name}} <br> Types of Company: {{company.htcompany}}<br>
-   <a href="/LMList/{{company.id}}/edit">Edit Company Branch</a>
+   Date Establish: {{bcompany.hdate_establish}} <br> Company Name: {{bcompany.hcompany_name}} <br> Types of Company: {{bcompany.htcompany}}<br>
     <div class="testbox">
-    <form method="POST" action="/LMList/{{company.id}}/add_info">
+    <form method="POST" action="/{{bcompany.id}}/add_info">
        {% csrf_token %}
       <div class="banner">
       
@@ -62,21 +110,24 @@
       </div>
     </form>
     <table name=tr>
+       <div class="filter">
+         </div>
       <tr>
-       <th>Company Branch</th>
-       <th>Company Address</th>
-       <th>Company Email</th>
-       <th>Phone No.#</th>
-       <th>Contact No.#</th>
-     
-    {% for qbranch in bcompany.qbranchs_set.all %}
+         
+          <th>Company Branch</th>
+          <th>Company Address</th>
+          <th>Phone No.#</th>
+          <th>Company Email</th>
+          <th>Contact No.#</th>
+          <th>EDIT/DELETE</th>
+      
+    {% for branch in bcompany.branch_set.all %}
     <tr>
-      <td>{{ qbranch.bcompany_branch }}</td>
-      <td>{{ qbranch.bcompany_address }}</td>
-      <td>{{ qbranch.bcontact_number }}</td>
-      <td>{{ qbranch.bemail }}</td>
-      <td>{{ qbranch.bphone_number }}</td>
-      <td>{{ qbranch.bemail }}</td>
+      <td>{{ branch.bcompany_branch }}</td> 
+      <td>{{ branch.bcompany_address }}</td>
+      <td>{{ branch.bcontact_number }}</td>
+      <td>{{ branch.bemail }}</td>
+      <td>{{ branch.bphone_number }}</td>
     </tr> {% endfor %} </tr> </table>
     </div>
    

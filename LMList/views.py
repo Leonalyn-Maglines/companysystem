@@ -3,7 +3,87 @@ from django.http import HttpResponse
 from LMList.models import Branch, Company, Employee, Background, Appointment_Details
 from django.views.decorators.csrf import csrf_exempt
 
-def home_page(request):
+
+def home_page(request): 
+	return render(request, 'homepage.html')
+
+def company(request): 
+	bcompanys = Company.objects.all()
+	return render(request, 'COMPANYY.html',{'bcompanys':bcompanys})
+
+def new_bcompany(request):
+	newcompany = Company.objects.create(hcompany_name=request.POST['Cname'],hdate_establish=request.POST['date'],hcompany_description=request.POST['Cdescrption'],hmission=request.POST['mission'],hvision=request.POST['vision'],htcompany=request.POST['mySelect'])
+	return redirect(f'/{newcompany.id}/')
+
+def view_bcompany(request, bcompany_id):
+	bcompany_ = Company.objects.get(id=bcompany_id)
+	return render(request,'BRANCH.html',{'bcompany':bcompany_})
+
+def add_info(request, bcompany_id):
+	bcompany_ = Company.objects.get(id=bcompany_id)
+	Branch.objects.create(bcompany_branch=request.POST['location'],bcompany_address=request.POST['Caddress'],bemail=request.POST['Cemail'],bphone_number=request.POST['Cnumber'],bcontact_number=request.POST['pnumber'],bcompany=bcompany_)
+	return redirect(f'/{bcompany_.id}/')
+def service_list(request ):
+  	return render(request, 'services.html' )
+
+def works_list(request ):
+  	return render(request, 'howworks.html' )
+
+def homepage_list(request ):
+  	return render(request, 'homepage.html' )
+
+
+def fifth_list(request ):
+  	return render(request, 'about.html' )
+
+def form_list(request ):
+    return render(request, 'COMPANYY.html' )
+
+def third_list(request ):
+    return render(request, 'EMPLOYEE.html' )
+
+def fourth_list(request ):
+    return render(request, '4-5model.html' )
+
+def confirmation_list(request ):
+    return render(request, 'LAST.html' )
+
+def edit(request, id):
+	bcompanys = Company.objects.get(id=id)
+	context = {'bcompanys_':bcompanys}
+	return render (request, 'companyedit.html',context)
+
+def update(request, id):
+	bcompany = Company.objects.get(id=id)
+	bcompany.hcompany_name = request.POST['Cname']
+	bcompany.hdate_establish = request.POST['date']
+	bcompany.hcompany_description = request.POST['Cdescrption']
+	bcompany.hmission = request.POST['mission']
+	bcompany.hvision = request.POST['vision']
+	bcompany.htcompany = request.POST['mySelect']
+	bcompany.save()
+	return redirect('/company')
+
+def delete(request, id):
+	bcompany = Company.objects.get(id=id)
+	bcompany.delete()
+	return redirect('/company')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''def home_page(request):
     companys = Company.objects.all()
     return render(request, 'homepage.html',{'companys' : companys})
 
@@ -32,35 +112,7 @@ def fifth_list(request ):
 def service_list(request ):
   	return render(request, 'services.html' )
 
-def works_list(request ):
-  	return render(request, 'howworks.html' )
-
-def homepage_list(request ):
-  	return render(request, 'homepage.html' )
-
-def confirmation_list(request ):
-  	return render(request, 'LAST.html' )
-
-
-def Mainpage(request): 
-	bcompany = Company.objects.all()
-	return render(request, 'COMPANYY.html',{'bcompany':bcompany})
-
-def new_bcompany(request):
-	newcompany = Company.objects.create(hcompany_name=request.POST['Cname'],hdate_establish=request.POST['date'],hcompany_description=request.POST['Cdescrption'],hmission=request.POST['mission'],hvision=request.POST['vision'],htcompany=request.POST['mySelect'])
-	return redirect(f'/LMList/{newcompany.id}/')
-
-def view_bcompany(request, bcompany_id):
-	bcompany_ = Company.objects.get(id=bcompany_id)
-	qbranch = Branch.objects.all()
-	return render(request,'BRANCH.html',{'bcompany':bcompany_,'qbranchs':qbranch_,})
-
-def add_info(request, bcompany_id):
-	bcompany_ = Company.objects.get(id=bcompany_id)
-	Branch.objects.create(bcompany_branch=request.POST['location'],bcompany_address=request.POST['Caddress'],bemail=request.POST['Cemail'],bphone_number=request.POST['Cnumber'],bcontact_number=request.POST['pnumber'],bcompany=bcompany_)
-	return redirect(f'/LMList/{bcompany_.id}/')
-
-'''def UpdateCompany(request, id):
+def UpdateCompany(request, id):
 	company_ = Company.objects.get(id=id)
 	company.hcompany_name = request.POST['Cname']
 	company.hdate_establish = request.POST['date']
@@ -84,6 +136,8 @@ def EditCompany(request, id):
 
 
 
+def confirmation_list(request ):
+  	return render(request, 'LAST.html' )'''
 
 
 
@@ -95,6 +149,15 @@ def EditCompany(request, id):
 
 
 
+
+
+
+
+
+
+
+
+'''
 
 def new_list(request):
     New_Company = Company.objects.create()
